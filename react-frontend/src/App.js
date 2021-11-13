@@ -1,13 +1,10 @@
+import logo from "./logo.svg";
 import "./App.css";
-import BurgerPlace from "./components/BurgerPlace";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <BurgerPlace />
-        <BurgerPlace />
-      </header>
+      <header className="App-header"></header>
     </div>
   );
 }
