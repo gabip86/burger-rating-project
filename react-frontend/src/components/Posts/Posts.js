@@ -1,13 +1,10 @@
 import React from "react";
+import { Grid } from "@material-ui/core";
 
 const Posts = () => {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col m-2">Post</div>
-        <div className="col m-2">Post</div>
-        <div className="col m-2">Post</div>
-      </div>
+    <div>
+      <Grid></Grid>
     </div>
   );
 };
