@@ -25,7 +25,7 @@ const Navbar = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Burger Rating App
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">Register</Button>
           </Toolbar>
         </AppBar>
       </Box>
