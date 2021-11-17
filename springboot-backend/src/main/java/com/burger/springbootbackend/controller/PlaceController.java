@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +37,22 @@ public class PlaceController {
 	@PostMapping("/posts")
 	public Place cratePlace(@RequestBody Place place) {
 		return placeRepository.save(place);
+	}
+	
+	@PutMapping("/post/{id}")
+	public ResponseEntity<Place> updatePlace(@PathVariable(value="id") Long userId, @RequestBody Place placeDetails) throws Exception {
+		Place place = placeRepository
+				.findById(userId)
+				.orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + userId));
+		
+		place.setName(placeDetails.getName());
+		place.setLocation(placeDetails.getLocation());
+		place.setOpeningTime(placeDetails.getOpeningTime());
+		place.setTasteScore(placeDetails.getTasteScore());
+		place.setTextureScore(placeDetails.getTextureScore());
+		place.setPresentationScore(placeDetails.getPresentationScore());
+		final Place updatedPlace = placeRepository.save(place);
+		return ResponseEntity.ok(updatedPlace);
 	}
 	
 	@DeleteMapping("/post/{id}")
