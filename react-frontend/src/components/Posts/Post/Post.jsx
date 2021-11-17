@@ -25,10 +25,10 @@ const Post = ({ post, setCurrentId }) => {
       <CardMedia
         className={classes.media}
         image={post.selectedFile}
-        title={post.title}
+        title={post.name}
       />
       <div className={classes.overlay}>
-        <Typography variant="h6">{post.creator}</Typography>
+        <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
@@ -42,17 +42,21 @@ const Post = ({ post, setCurrentId }) => {
           <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
-      <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary">
-          {post.tags.map((tag) => `#${tag} `)}
-        </Typography>
-      </div>
-      <Typography className={classes.title} variant="h5" gutterBottom>
-        {post.title}
-      </Typography>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {post.message}
+          Location: {post.location}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Opening Time: {post.openingTime}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Taste Score: {post.tasteScore}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Texture Score: {post.textureScore}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Presentation Score: {post.presentationScore}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
