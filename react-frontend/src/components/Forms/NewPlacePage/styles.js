@@ -6,8 +6,11 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  box: {},
   paper: {
-    padding: theme.spacing(2),
+    margin: theme.spacing(3),
+    padding: theme.spacing(3),
+    width: "50%",
   },
   form: {
     display: "flex",
