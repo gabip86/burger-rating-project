@@ -10,6 +10,7 @@ const NewPlacePage = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     name: "",
     location: "",
+    image: "",
     openingTime: "",
     tasteScore: "",
     textureScore: "",
@@ -40,11 +41,13 @@ const NewPlacePage = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(null);
     setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
+      name: "",
+      location: "",
+      image: "",
+      openingTime: "",
+      tasteScore: "",
+      textureScore: "",
+      presentationScore: "",
     });
   };
 
@@ -54,6 +57,7 @@ const NewPlacePage = ({ currentId, setCurrentId }) => {
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
+        // enctype="multipart/form-data"
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">Add new Place</Typography>
@@ -125,9 +129,7 @@ const NewPlacePage = ({ currentId, setCurrentId }) => {
           <FileBase
             type="file"
             multiple={false}
-            onDone={({ base64 }) =>
-              setPostData({ ...postData, selectedFile: base64 })
-            }
+            onDone={({ base64 }) => setPostData({ ...postData, image: base64 })}
           />
         </div>
         <Button

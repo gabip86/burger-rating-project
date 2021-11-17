@@ -21,6 +21,9 @@ public class Place {
 	@Column
 	private String location;
 	
+    @Column(name = "Image")
+    private String image;
+	
 	@Column(name = "opening_time")
 	private String openingTime;
 	
@@ -40,11 +43,12 @@ public class Place {
 		
 	}
 	
-	public Place(String name, String location, String openingTime, long tasteScore, long textureScore,
+	public Place(String name, String location, String image, String openingTime, long tasteScore, long textureScore,
 			long presentationScore, long userId) {
 		super();
 		this.name = name;
 		this.location = location;
+		this.image = image;
 		this.openingTime = openingTime;
 		this.tasteScore = tasteScore;
 		this.textureScore = textureScore;
@@ -69,6 +73,12 @@ public class Place {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
 	public String getOpeningTime() {
 		return openingTime;
 	}

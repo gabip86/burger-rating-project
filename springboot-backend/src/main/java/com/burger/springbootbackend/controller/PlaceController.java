@@ -14,11 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.burger.springbootbackend.exception.ResourceNotFoundException;
 import com.burger.springbootbackend.model.Place;
 import com.burger.springbootbackend.repository.PlaceRepository;
+import com.burger.springbootbackend.utils.FileUploadUtil;
+
+import org.springframework.util.StringUtils;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -28,16 +33,27 @@ public class PlaceController {
 	@Autowired
 	private PlaceRepository placeRepository;
 	
-	// get all places
 	@GetMapping("/posts")
 	public List<Place> getAllPlaces() {
 		return placeRepository.findAll();
 	}
 	
 	@PostMapping("/posts")
-	public Place cratePlace(@RequestBody Place place) {
+	public Place createPlace(@RequestBody Place place) {
 		return placeRepository.save(place);
 	}
+	
+//	@PostMapping(value = "/posts", headers = ("content-type=multipart/form-data"))
+//	public Place createPlace(Place place, @RequestParam("image") MultipartFile multipartFile) throws Exception {
+//		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//		place.setImage(fileName);
+//
+//		Place savedPlace = placeRepository.save(place);
+//		String uploadDir = "photo/" + savedPlace.getId();
+//
+//		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//		return placeRepository.save(savedPlace);
+//	}
 	
 	@PutMapping("/post/{id}")
 	public ResponseEntity<Place> updatePlace(@PathVariable(value="id") Long userId, @RequestBody Place placeDetails) throws Exception {

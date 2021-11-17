@@ -24,14 +24,14 @@ const Post = ({ post, setCurrentId }) => {
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image={post.selectedFile}
+        image={post.image}
         title={post.name}
       />
       <div className={classes.overlay}>
         <Typography variant="h6">{post.name}</Typography>
-        <Typography variant="body2">
+        {/* <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
-        </Typography>
+        </Typography> */}
       </div>
       <div className={classes.overlay2}>
         <Button
