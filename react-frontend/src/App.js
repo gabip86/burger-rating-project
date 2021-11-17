@@ -1,12 +1,11 @@
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Posts from "./components/Posts/Posts";
+import NewPlacePage from "./components/Forms/NewPlacePage/NewPlacePage.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Posts />
+      <NewPlacePage />
     </div>
   );
 }
